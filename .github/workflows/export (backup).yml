@@ -18,10 +18,10 @@ on:
         type: choice
         options:
           - "Android"
-          - "HTML5"
+          - "Web"
           - "Windows Desktop"
           - "Linux/X11"
-          - "Mac OSX"
+          - "macOS"
       filename:
         required: true
         description: "Enter file name:"
