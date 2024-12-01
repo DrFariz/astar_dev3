@@ -19,11 +19,25 @@ jobs:
       - name: extract
         run: unzip godot-templates.tpz -d ~/godot-templates
         
+        - name: debugging
+          run: |
+            ls ~/godot-templates/templates
+            echo "-----"
+            ls
+            echo "-----"
+            ls /home/runner/godot-templates/templates/android_debug.apk
+        
       - name: debug
         uses: actions/upload-artifact@v4
         with:
           name: debug
           path: godot-templates/templates/android_debug.apk
+
+      - name: debugv2
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug
+          path: /home/runner/godot-templates/templates/android_debug.apk
 
       - name: release
         uses: actions/upload-artifact@v4
