@@ -19,8 +19,8 @@ jobs:
       - name: extract & compress
         run: |
           unzip godot-templates.tpz -d ~/godot-templates
-          zip -r /home/runner/godot-templates/templates/android_debug.apk ~/debug.zip
-          zip -r /home/runner/godot-templates/templates/android_release.apk ~/release.zip
+          zip ~/debug.zip /home/runner/godot-templates/templates/android_debug.apk
+          zip ~/release.zip /home/runner/godot-templates/templates/android_release.apk
         
       - name: debug
         uses: actions/upload-artifact@v4
