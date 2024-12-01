@@ -16,31 +16,26 @@ jobs:
       - name: Download Export Templates
         run: curl -L ${{ inputs.templates_link }} -o godot-templates.tpz
         
-      - name: extract
-        run: unzip godot-templates.tpz -d ~/godot-templates
-        
-      - name: debugging
+      - name: extract & compress
         run: |
-          ls ~/godot-templates/templates
-          echo "-----"
-          ls
-          echo "-----"
-          ls /home/runner/godot-templates/templates/android_debug.apk
+          unzip godot-templates.tpz -d ~/godot-templates
+          zip -r /home/runner/godot-templates/templates/android_debug.apk ~/debug.zip
+          zip -r /home/runner/godot-templates/templates/android_release.apk ~/release.zip
         
       - name: debug
         uses: actions/upload-artifact@v4
         with:
           name: debug
-          path: godot-templates/templates/android_debug.apk
-
-      - name: debugv2
-        uses: actions/upload-artifact@v4
-        with:
-          name: debug
-          path: /home/runner/godot-templates/templates/android_debug.apk
+          path: /home/runner/debug.zip
 
       - name: release
         uses: actions/upload-artifact@v4
         with:
           name: release
-          path: godot-templates/templates/android_release.apk
+          path: /home/runner/release.zip 
+          
+      - name: source
+        uses: actions/upload-artifact@v4
+        with:
+          name: release
+          path: /home/runner/godot-templates/templates/android_source.zip
