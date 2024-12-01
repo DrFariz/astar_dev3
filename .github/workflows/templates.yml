@@ -37,5 +37,5 @@ jobs:
       - name: source
         uses: actions/upload-artifact@v4
         with:
-          name: release
+          name: source
           path: /home/runner/godot-templates/templates/android_source.zip
